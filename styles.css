@@ -228,20 +228,22 @@
 /* FONDO CÓSMICO DE MI UNIVERSO */
 .login-screen {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   min-height: 100vh;
   background:
-    radial-gradient(ellipse at 5% 15%, rgba(111, 0, 255, .48), transparent 38%),
-    radial-gradient(ellipse at 95% 20%, rgba(255, 0, 105, .35), transparent 35%),
-    radial-gradient(ellipse at 15% 90%, rgba(145, 0, 255, .38), transparent 40%),
-    radial-gradient(ellipse at 85% 85%, rgba(255, 0, 125, .32), transparent 38%),
-    radial-gradient(ellipse at center, #18052e 0%, #080512 65%, #030208 100%);
+    radial-gradient(ellipse at 5% 15%, rgba(111, 0, 255, .65), transparent 38%),
+    radial-gradient(ellipse at 95% 20%, rgba(255, 0, 105, .50), transparent 35%),
+    radial-gradient(ellipse at 15% 90%, rgba(145, 0, 255, .55), transparent 40%),
+    radial-gradient(ellipse at 85% 85%, rgba(255, 0, 125, .50), transparent 38%),
+    radial-gradient(ellipse at center, #250642 0%, #10051e 65%, #030208 100%);
 }
 
 .login-screen::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: -1;
   pointer-events: none;
   background-image:
     radial-gradient(2px 2px at 20% 30%, white 99%, transparent),
@@ -249,7 +251,7 @@
     radial-gradient(2px 2px at 40% 75%, white 99%, transparent),
     radial-gradient(2px 2px at 85% 65%, #ff65d5 99%, transparent);
   background-size: 180px 180px;
-  opacity: .7;
+  opacity: .85;
 }
 
 .login-image-placeholder {
