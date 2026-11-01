@@ -15,58 +15,53 @@
   <div class="ambient ambient-a"></div>
   <div class="ambient ambient-b"></div>
 
-  <!-- PANTALLA DE INICIO DE SESIÓN -->
+  <!-- PANTALLA DE INICIO DE SESIÓN: DISEÑO CÓSMICO -->
   <section id="loginScreen" class="login-screen">
-    <div class="login-card panel">
+    <div class="login-wrap">
+      <header class="login-brand">
+        <span class="brand-orbit" aria-hidden="true">✦</span>
+        <h1><span>MI</span><strong>UNIVERSO</strong></h1>
+        <p>PLANIFICA · ORGANIZA · CUMPLE TUS SUEÑOS</p>
+        <div class="brand-divider"><span>✦</span></div>
+      </header>
 
-      <div class="login-title">
-        <span class="login-star">✦</span>
-        <h1>MI <b>UNIVERSO</b></h1>
-        <p>TU ESPACIO · TU RITMO · TU PROGRESO</p>
-      </div>
+      <div class="login-card">
+        <span class="card-star" aria-hidden="true">✧</span>
+        <div class="login-form">
+          <h2>Bienvenido</h2>
+          <p class="login-description">Inicia sesión en tu universo personal.</p>
 
-      <!-- ESPACIO PARA TU IMAGEN PERSONAL -->
-      <div class="login-image-placeholder">
-        <span>✧</span>
-        <p>Aquí irá tu imagen personal</p>
-      </div>
+          <div class="auth-fields">
+            <label class="auth-input-wrap">
+              <span class="field-icon" aria-hidden="true">✉</span>
+              <input id="email" type="email" placeholder="Tu correo electrónico"
+                autocomplete="email" aria-label="Tu correo electrónico">
+            </label>
 
-      <div class="login-form">
-        <h2>Bienvenido</h2>
-        <p class="login-description">Entra a tu universo personal.</p>
+            <label class="auth-input-wrap">
+              <span class="field-icon lock-icon" aria-hidden="true">♙</span>
+              <input id="password" type="password" placeholder="Tu contraseña"
+                autocomplete="current-password" aria-label="Tu contraseña">
+              <button type="button" id="togglePassword" class="password-toggle"
+                aria-label="Mostrar contraseña" title="Mostrar u ocultar contraseña">◉</button>
+            </label>
 
-        <div class="auth-fields">
-          <input
-            id="email"
-            type="email"
-            placeholder="Tu correo electrónico"
-            autocomplete="email"
-          >
+            <button id="signInBtn" class="btn btn-primary login-submit">
+              <span aria-hidden="true">↪</span> Iniciar sesión
+            </button>
 
-          <input
-            id="password"
-            type="password"
-            placeholder="Tu contraseña"
-            autocomplete="current-password"
-          >
+            <div class="login-separator"><span>✦</span></div>
 
-          <button id="signInBtn" class="btn btn-primary">
-            INICIAR SESIÓN
-          </button>
+            <button id="googleSignInBtn" class="google-login" type="button">
+              <span class="google-g" aria-hidden="true">G</span>
+              Continuar con Google
+            </button>
 
-          <p class="login-create">
-            ¿No tienes cuenta?
-            <button id="signUpBtn" class="login-link">Crear cuenta</button>
-          </p>
-
-          <button id="resetPasswordBtn" class="login-forgot">
-            ¿Olvidaste tu contraseña?
-          </button>
+            <p class="login-create">¿No tienes una cuenta? <button id="signUpBtn" class="login-link">Regístrate</button></p>
+            <button id="resetPasswordBtn" class="login-forgot">¿Olvidaste tu contraseña?</button>
+          </div>
+          <p id="authMessage" class="hint" aria-live="polite">Ingresa con tu cuenta para acceder a tus cronogramas.</p>
         </div>
-
-        <p id="authMessage" class="hint">
-          Ingresa con tu cuenta para acceder a tus cronogramas.
-        </p>
       </div>
     </div>
   </section>

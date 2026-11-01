@@ -507,6 +507,40 @@
     resetPassword();
   });
 
+  // Mostrar u ocultar la contraseña sin alterar el inicio de sesión.
+  $("togglePassword").addEventListener("click",()=>{
+    const input = $("password");
+    const visible = input.type === "password";
+    input.type = visible ? "text" : "password";
+    $("togglePassword").textContent = visible ? "◎" : "◉";
+    $("togglePassword").setAttribute(
+      "aria-label",
+      visible ? "Ocultar contraseña" : "Mostrar contraseña"
+    );
+  });
+
+  // Acceso opcional con Google. Requiere habilitar Google en Supabase Auth.
+  $("googleSignInBtn").addEventListener("click",async()=>{
+    if (!supabase) {
+      $("authMessage").textContent = "No se pudo conectar con Supabase. Revisa la configuración.";
+      return;
+    }
+    $("googleSignInBtn").disabled = true;
+    $("authMessage").textContent = "Conectando con Google…";
+    try {
+      const {error} = await supabase.auth.signInWithOAuth({
+        provider:"google",
+        options:{redirectTo:redirectUrl}
+      });
+      if (error) throw error;
+    } catch(e) {
+      console.error(e);
+      $("authMessage").textContent =
+        "No se pudo iniciar con Google. Comprueba que el proveedor Google esté habilitado en Supabase.";
+      $("googleSignInBtn").disabled = false;
+    }
+  });
+
   $("signOutBtn").addEventListener("click",async()=>{
     if (supabase) {
       await supabase.auth.signOut();
