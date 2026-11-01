@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -11,105 +12,240 @@
   <title>Mi Universo · Organizador personal</title>
 </head>
 <body>
-  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
-  <header class="topbar">
-    <a class="brand" href="#" aria-label="Mi Universo inicio"><span class="brand-mark">✦</span><span>MI <b>UNIVERSO</b></span></a>
-    <div class="top-actions">
-      <span id="connection" class="connection"><i></i> Local</span>
-      <button id="themeBtn" class="icon-btn" title="Cambiar brillo" aria-label="Cambiar brillo">☼</button>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <!-- PANTALLA DE INICIO DE SESIÓN -->
+  <section id="loginScreen" class="login-screen">
+    <div class="login-card panel">
+
+      <div class="login-title">
+        <span class="login-star">✦</span>
+        <h1>MI <b>UNIVERSO</b></h1>
+        <p>TU ESPACIO · TU RITMO · TU PROGRESO</p>
+      </div>
+
+      <!-- ESPACIO PARA TU IMAGEN PERSONAL -->
+      <div class="login-image-placeholder">
+        <span>✧</span>
+        <p>Aquí irá tu imagen personal</p>
+      </div>
+
+      <div class="login-form">
+        <h2>Bienvenido</h2>
+        <p class="login-description">Entra a tu universo personal.</p>
+
+        <div class="auth-fields">
+          <input
+            id="email"
+            type="email"
+            placeholder="Tu correo electrónico"
+            autocomplete="email"
+          >
+
+          <input
+            id="password"
+            type="password"
+            placeholder="Tu contraseña"
+            autocomplete="current-password"
+          >
+
+          <button id="signInBtn" class="btn btn-primary">
+            INICIAR SESIÓN
+          </button>
+
+          <p class="login-create">
+            ¿No tienes cuenta?
+            <button id="signUpBtn" class="login-link">Crear cuenta</button>
+          </p>
+
+          <button id="resetPasswordBtn" class="login-forgot">
+            ¿Olvidaste tu contraseña?
+          </button>
+        </div>
+
+        <p id="authMessage" class="hint">
+          Ingresa con tu cuenta para acceder a tus cronogramas.
+        </p>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main class="shell">
-    <section class="hero">
-      <div>
-        <p class="eyebrow">TU ESPACIO · TU RITMO · TU PROGRESO</p>
-        <h1>Haz espacio para<br><span>lo que quieres crear.</span></h1>
-        <p class="hero-copy">No tienes que hacerlo todo hoy. Solo dar el siguiente paso.</p>
-      </div>
-      <div class="date-chip"><span class="pulse"></span><span id="todayLabel">Tu semana</span></div>
-    </section>
+  <!-- APLICACIÓN: SOLO DESPUÉS DE INICIAR SESIÓN -->
+  <div id="appShell" class="hidden">
 
-    <section class="auth-card panel" id="authPanel">
-      <div class="auth-copy">
-        <span class="mini-icon">⇄</span>
-        <div><h2>Sincroniza tus dispositivos</h2><p>Inicia sesión con la misma cuenta en tu Android y computadora.</p></div>
-      </div>
-      <div class="auth-fields">
-        <input id="email" type="email" placeholder="Tu correo electrónico" autocomplete="email">
-        <input id="password" type="password" placeholder="Contraseña (mínimo 6 caracteres)" autocomplete="current-password">
-        <div class="auth-buttons"><button id="signInBtn" class="btn btn-primary">Iniciar sesión</button><button id="signUpBtn" class="btn btn-quiet">Crear cuenta</button></div>
-      </div>
-      <p id="authMessage" class="hint">Primero configura Supabase siguiendo el archivo LEEME.txt. Mientras tanto, puedes usar el organizador en este dispositivo.</p>
-      <button id="signOutBtn" class="text-btn hidden">Cerrar sesión</button>
-    </section>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Mi Universo inicio">
+        <span class="brand-mark">✦</span>
+        <span>MI <b>UNIVERSO</b></span>
+      </a>
 
-    <section class="overview-grid">
-      <article class="panel progress-panel">
-        <div class="panel-heading"><div><p class="eyebrow">RESUMEN SEMANAL</p><h2>Tu avance</h2></div><span class="spark">✧</span></div>
-        <div class="progress-content">
-          <div class="ring-wrap">
-            <svg class="progress-ring" viewBox="0 0 160 160" role="img" aria-label="Porcentaje de actividades completadas">
-              <circle class="ring-track" cx="80" cy="80" r="67"></circle>
-              <circle id="ringProgress" class="ring-value" cx="80" cy="80" r="67"></circle>
-            </svg>
-            <div class="ring-label"><strong id="percent">0%</strong><span>COMPLETADO</span></div>
+      <div class="top-actions">
+        <span id="connection" class="connection">
+          <i></i> Local
+        </span>
+        <button id="themeBtn" class="icon-btn" title="Cambiar brillo" aria-label="Cambiar brillo">☼</button>
+        <button id="signOutBtn" class="btn btn-quiet">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <main class="shell">
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">TU ESPACIO · TU RITMO · TU PROGRESO</p>
+          <h1>Haz espacio para<br><span>lo que quieres crear.</span></h1>
+          <p class="hero-copy">No tienes que hacerlo todo hoy. Solo dar el siguiente paso.</p>
+        </div>
+        <div class="date-chip">
+          <span class="pulse"></span>
+          <span id="todayLabel">Tu semana</span>
+        </div>
+      </section>
+
+      <section class="overview-grid">
+        <article class="panel progress-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">RESUMEN SEMANAL</p>
+              <h2>Tu avance</h2>
+            </div>
+            <span class="spark">✧</span>
           </div>
-          <div class="progress-stats"><div><strong id="doneCount">0</strong><span>Completadas</span></div><div><strong id="totalCount">0</strong><span>En tu plan</span></div></div>
+
+          <div class="progress-content">
+            <div class="ring-wrap">
+              <svg class="progress-ring" viewBox="0 0 160 160" role="img" aria-label="Porcentaje de actividades completadas">
+                <circle class="ring-track" cx="80" cy="80" r="67"></circle>
+                <circle id="ringProgress" class="ring-value" cx="80" cy="80" r="67"></circle>
+              </svg>
+              <div class="ring-label">
+                <strong id="percent">0%</strong>
+                <span>COMPLETADO</span>
+              </div>
+            </div>
+
+            <div class="progress-stats">
+              <div><strong id="doneCount">0</strong><span>Completadas</span></div>
+              <div><strong id="totalCount">0</strong><span>En tu plan</span></div>
+            </div>
+          </div>
+
+          <div class="progress-track"><div id="barProgress"></div></div>
+          <p id="encouragement" class="encouragement">Cada pequeño avance cuenta.</p>
+        </article>
+
+        <article class="panel focus-panel">
+          <p class="eyebrow">TU ENFOQUE</p>
+          <h2>Cuatro caminos,<br>un paso a la vez.</h2>
+          <div class="focus-list">
+            <div><span class="focus-dot violet"></span><span>Canto y formación vocal</span><small>Tu voz</small></div>
+            <div><span class="focus-dot pink"></span><span>Composición musical</span><small>Tus canciones</small></div>
+            <div><span class="focus-dot blue"></span><span>Trabajo y ahorro</span><small>Tu estabilidad</small></div>
+            <div><span class="focus-dot gold"></span><span>Proyecto de acertijos</span><small>Tu idea original</small></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel planner-panel">
+        <div class="planner-head">
+          <div>
+            <p class="eyebrow">PLANIFICACIÓN FLEXIBLE</p>
+            <h2>Tu semana</h2>
+            <p class="muted">Marca una actividad cuando la hayas terminado.</p>
+          </div>
+
+          <div class="week-controls">
+            <button id="prevWeek" class="icon-btn" aria-label="Semana anterior">‹</button>
+            <div>
+              <strong id="weekLabel">Semana actual</strong>
+              <small id="weekRange"></small>
+            </div>
+            <button id="nextWeek" class="icon-btn" aria-label="Semana siguiente">›</button>
+          </div>
         </div>
-        <div class="progress-track"><div id="barProgress"></div></div>
-        <p id="encouragement" class="encouragement">Cada pequeño avance cuenta.</p>
-      </article>
 
-      <article class="panel focus-panel">
-        <p class="eyebrow">TU ENFOQUE</p><h2>Cuatro caminos,<br>un paso a la vez.</h2>
-        <div class="focus-list">
-          <div><span class="focus-dot violet"></span><span>Canto y formación vocal</span><small>Tu voz</small></div>
-          <div><span class="focus-dot pink"></span><span>Composición musical</span><small>Tus canciones</small></div>
-          <div><span class="focus-dot blue"></span><span>Trabajo y ahorro</span><small>Tu estabilidad</small></div>
-          <div><span class="focus-dot gold"></span><span>Proyecto de acertijos</span><small>Tu idea original</small></div>
+        <div class="day-tabs" id="dayTabs"></div>
+        <div id="dayContent" class="day-content"></div>
+
+        <div class="planner-footer">
+          <span id="dayProgress">0 de 0 tareas</span>
+          <button id="addTaskBtn" class="btn btn-outline">＋ Añadir actividad</button>
         </div>
-      </article>
-    </section>
+      </section>
 
-    <section class="panel planner-panel">
-      <div class="planner-head">
-        <div><p class="eyebrow">PLANIFICACIÓN FLEXIBLE</p><h2>Tu semana</h2><p class="muted">Marca una actividad cuando la hayas terminado.</p></div>
-        <div class="week-controls"><button id="prevWeek" class="icon-btn" aria-label="Semana anterior">‹</button><div><strong id="weekLabel">Semana actual</strong><small id="weekRange"></small></div><button id="nextWeek" class="icon-btn" aria-label="Semana siguiente">›</button></div>
-      </div>
-      <div class="day-tabs" id="dayTabs"></div>
-      <div id="dayContent" class="day-content"></div>
-      <div class="planner-footer"><span id="dayProgress">0 de 0 tareas</span><button id="addTaskBtn" class="btn btn-outline">＋ Añadir actividad</button></div>
-    </section>
+      <section class="bottom-grid">
+        <article class="panel notes-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">DIARIO DE AVANCE</p>
+              <h2>Lo que tengo en mente</h2>
+            </div>
+            <span class="mini-icon">✎</span>
+          </div>
 
-    <section class="bottom-grid">
-      <article class="panel notes-panel">
-        <div class="panel-heading"><div><p class="eyebrow">DIARIO DE AVANCE</p><h2>Lo que tengo en mente</h2></div><span class="mini-icon">✎</span></div>
-        <textarea id="weeklyNotes" rows="4" placeholder="¿Qué logré esta semana? ¿Qué idea quiero recordar? ¿Qué puedo mejorar?"></textarea>
-        <div class="save-row"><span id="saveStatus" class="hint">Se guarda en este dispositivo.</span><button id="saveNotesBtn" class="btn btn-primary btn-small">Guardar nota</button></div>
-      </article>
-      <article class="panel goals-panel">
-        <p class="eyebrow">REGLA DE ORO</p><h2>No llenes cada minuto.</h2>
-        <p>Si aparece un ensayo o evento, reemplaza el bloque creativo. No tienes que recuperar esas horas sacrificando tu sueño.</p>
-        <div class="quote-line">“Constancia sin agotamiento.”</div>
-      </article>
-    </section>
+          <textarea id="weeklyNotes" rows="4" placeholder="¿Qué logré esta semana? ¿Qué idea quiero recordar? ¿Qué puedo mejorar?"></textarea>
 
-    <footer><span>MI UNIVERSO</span><span>Hecho para avanzar a tu propio ritmo ✦</span></footer>
-  </main>
+          <div class="save-row">
+            <span id="saveStatus" class="hint">Se guarda en este dispositivo.</span>
+            <button id="saveNotesBtn" class="btn btn-primary btn-small">Guardar nota</button>
+          </div>
+        </article>
+
+        <article class="panel goals-panel">
+          <p class="eyebrow">REGLA DE ORO</p>
+          <h2>No llenes cada minuto.</h2>
+          <p>Si aparece un ensayo o evento, reemplaza el bloque creativo. No tienes que recuperar esas horas sacrificando tu sueño.</p>
+          <div class="quote-line">“Constancia sin agotamiento.”</div>
+        </article>
+      </section>
+
+      <footer>
+        <span>MI UNIVERSO</span>
+        <span>Hecho para avanzar a tu propio ritmo ✦</span>
+      </footer>
+    </main>
+  </div>
 
   <dialog id="taskDialog" class="modal">
     <form method="dialog" id="taskForm">
-      <div class="modal-head"><div><p class="eyebrow">PERSONALIZA TU PLAN</p><h2>Añadir actividad</h2></div><button class="icon-btn" value="cancel" aria-label="Cerrar">×</button></div>
-      <label>Nombre de la actividad<input id="taskTitle" required maxlength="90" placeholder="Ej. Practicar repertorio"></label>
-      <label>Área<select id="taskCategory"><option>Canto</option><option>Composición</option><option>Trabajo y ahorro</option><option>Proyecto de acertijos</option><option>Personal</option></select></label>
-      <div class="modal-actions"><button class="btn btn-quiet" value="cancel">Cancelar</button><button id="confirmTaskBtn" class="btn btn-primary" value="default">Añadir</button></div>
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">PERSONALIZA TU PLAN</p>
+          <h2>Añadir actividad</h2>
+        </div>
+        <button class="icon-btn" value="cancel" aria-label="Cerrar">×</button>
+      </div>
+
+      <label>Nombre de la actividad
+        <input id="taskTitle" required maxlength="90" placeholder="Ej. Practicar repertorio">
+      </label>
+
+      <label>Área
+        <select id="taskCategory">
+          <option>Canto</option>
+          <option>Composición</option>
+          <option>Trabajo y ahorro</option>
+          <option>Proyecto de acertijos</option>
+          <option>Personal</option>
+        </select>
+      </label>
+
+      <div class="modal-actions">
+        <button class="btn btn-quiet" value="cancel">Cancelar</button>
+        <button id="confirmTaskBtn" class="btn btn-primary" value="default">Añadir</button>
+      </div>
     </form>
   </dialog>
 
   <div id="toast" class="toast" role="status"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="./config.js"></script>
   <script src="./app.js"></script>
 </body>
+<<<<<<< HEAD:index.html
 </html>
+=======
+</html>
+>>>>>>> 08a6fb7 (Actualizar inicio de sesión de Mi Universo):mi_universo_pwa/mi_universo_pwa/index.html
