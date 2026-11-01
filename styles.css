@@ -225,3 +225,41 @@
     letter-spacing: 2px;
   }
 }
+/* FONDO CÓSMICO DE MI UNIVERSO */
+.login-screen {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 5% 15%, rgba(111, 0, 255, .48), transparent 38%),
+    radial-gradient(ellipse at 95% 20%, rgba(255, 0, 105, .35), transparent 35%),
+    radial-gradient(ellipse at 15% 90%, rgba(145, 0, 255, .38), transparent 40%),
+    radial-gradient(ellipse at 85% 85%, rgba(255, 0, 125, .32), transparent 38%),
+    radial-gradient(ellipse at center, #18052e 0%, #080512 65%, #030208 100%);
+}
+
+.login-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white 99%, transparent),
+    radial-gradient(2px 2px at 70% 20%, #d9a3ff 99%, transparent),
+    radial-gradient(2px 2px at 40% 75%, white 99%, transparent),
+    radial-gradient(2px 2px at 85% 65%, #ff65d5 99%, transparent);
+  background-size: 180px 180px;
+  opacity: .7;
+}
+
+.login-image-placeholder {
+  display: none;
+}
+
+.login-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(8, 3, 20, .82);
+  border: 1px solid rgba(190, 75, 255, .65);
+  box-shadow: 0 0 35px rgba(157, 0, 255, .28);
+}
