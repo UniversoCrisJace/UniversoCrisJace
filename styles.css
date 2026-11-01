@@ -351,3 +351,66 @@ body:has(#loginScreen:not(.hidden)) {
  .login-form .auth-input-wrap { min-height:54px; border-radius:16px; }
  .login-form button.login-submit { min-height:54px; }
 }
+
+/* AJUSTES EXTRA PARA CELULARES */
+@media (max-width: 390px) {
+  .login-screen {
+    min-height: 100svh;
+    padding: max(18px, env(safe-area-inset-top)) 12px max(20px, env(safe-area-inset-bottom));
+    align-items: start;
+  }
+  .login-wrap { width: 100%; max-width: 360px; }
+  .login-brand { margin-bottom: 15px; }
+  .brand-orbit { font-size: 34px; }
+  .login-brand h1 span { font-size: 23px; }
+  .login-brand h1 strong { font-size: clamp(37px, 11.5vw, 48px); letter-spacing: 1px; }
+  .login-brand > p { font-size: 8px; letter-spacing: 1px; line-height: 1.6; }
+  .login-card { padding: 24px 15px 18px; border-radius: 23px; }
+  .card-star { font-size: 36px; margin-bottom: 16px; }
+  .login-form h2 { font-size: 25px; }
+  .login-description { font-size: 14px; line-height: 1.45; }
+  .login-form .auth-input-wrap { gap: 9px; padding: 0 12px; min-height: 52px; }
+  .field-icon { font-size: 22px; flex-basis: 22px; width: 22px; }
+  .login-form .auth-input-wrap input { font-size: 16px; }
+  .login-form button.login-submit { font-size: 16px; min-height: 52px; }
+  .login-form button.google-login { min-height: 50px; font-size: 14px; }
+  .login-create, .login-form button.login-forgot { font-size: 13px; }
+}
+@media (max-height: 740px) and (max-width: 600px) {
+  .login-screen { align-items: start; padding-top: max(14px, env(safe-area-inset-top)); padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+  .login-brand { margin-bottom: 12px; }
+  .brand-orbit { font-size: 30px; }
+  .login-brand h1 strong { font-size: clamp(39px, 10vw, 52px); }
+  .login-brand > p { margin-top: 9px; }
+  .login-card { padding-top: 22px; }
+  .card-star { margin-top: -14px; margin-bottom: 14px; }
+}
+@media (hover: none) and (pointer: coarse) {
+  .login-form button.login-submit, .login-form button.google-login,
+  .login-form button.login-link, .login-form button.login-forgot,
+  .login-form .password-toggle { touch-action: manipulation; }
+}
+
+/* AJUSTES EXCLUSIVOS PARA CELULAR Y TABLET PEQUEÑA.
+   No se aplican a la versión de PC (pantallas de más de 760 px). */
+@media screen and (max-width: 760px) {
+  .login-screen {
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
+  }
+  .login-wrap {
+    width: 100%;
+    max-width: 570px;
+  }
+  .login-card,
+  .login-form,
+  .login-form .auth-input-wrap,
+  .login-form button {
+    max-width: 100%;
+  }
+  .login-form .auth-input-wrap input {
+    width: 100%;
+  }
+}
