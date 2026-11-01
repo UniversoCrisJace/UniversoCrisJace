@@ -1,0 +1,76 @@
+MI UNIVERSO — PWA personal gratuita
+===================================
+
+QUÉ INCLUYE
+- Planificador semanal con días seleccionables.
+- Checks para completar tareas y porcentaje circular automático.
+- Añadir y eliminar actividades.
+- Notas semanales.
+- Diseño oscuro negro/morado con animaciones y vista adaptable a Android y computadora.
+- Almacenamiento local para conservar cambios en el dispositivo.
+- Sincronización entre dispositivos mediante Supabase (requiere configuración inicial gratuita).
+- Instalación como aplicación PWA; no requiere Play Store.
+
+IMPORTANTE SOBRE LA SINCRONIZACIÓN
+La app no puede sincronizar por sí sola entre dos dispositivos sin un servicio compartido en internet.
+Este proyecto usa Supabase. El plan gratuito suele ser suficiente para uso personal ligero, sujeto a los límites vigentes.
+Tus datos se guardan localmente y, al iniciar sesión, se sincroniza la semana seleccionada.
+Usa la misma cuenta en Android y computadora.
+No introduzcas contraseñas sensibles ni compartas las claves de tu proyecto.
+
+PARTE A — CREAR EL BACKEND GRATUITO
+1. Entra a https://supabase.com/ y crea una cuenta gratuita.
+2. Crea un proyecto nuevo (guarda la contraseña de base de datos en un lugar seguro).
+3. En el panel del proyecto abre SQL Editor > New query.
+4. Copia todo el contenido de supabase-schema.sql, pégalo y pulsa Run.
+5. Abre Project Settings > API (o Connect, según la interfaz).
+6. Copia Project URL y la clave publicable/anon (NUNCA service_role).
+7. Abre config.js en un editor de texto:
+   window.SUPABASE_URL = "https://TU-PROYECTO.supabase.co";
+   window.SUPABASE_ANON_KEY = "TU_CLAVE_PUBLICA";
+8. Guarda config.js.
+
+PARTE B — PUBLICAR GRATIS
+Opción sencilla: GitHub Pages
+1. Crea una cuenta en https://github.com/
+2. Crea un repositorio nuevo. Para que sea público y gratis en Pages, elige Public.
+3. Sube TODOS los archivos y carpetas de este proyecto a la raíz del repositorio.
+4. En el repositorio abre Settings > Pages.
+5. En Build and deployment elige Deploy from a branch.
+6. Selecciona branch main y folder /(root), guarda.
+7. Espera a que GitHub Pages muestre la dirección publicada, normalmente:
+   https://TU-USUARIO.github.io/NOMBRE-DEL-REPOSITORIO/
+8. Abre esa dirección en tu computadora y comprueba que carga.
+
+NOTA: config.js contiene la clave publicable de Supabase, diseñada para estar en el cliente si RLS está bien configurado. Nunca pongas la clave service_role. Mantén activadas las políticas RLS del SQL.
+
+PARTE C — INSTALAR EN ANDROID
+1. Abre la dirección de GitHub Pages desde Chrome en tu Android.
+2. Pulsa ⋮ (menú).
+3. Elige Instalar aplicación o Añadir a pantalla de inicio.
+4. Confirma. Aparecerá el icono Mi Universo.
+
+PARTE D — USAR EN COMPUTADORA
+1. Abre la misma dirección en Chrome o Edge.
+2. Usa el icono de instalar que aparece en la barra de direcciones o el menú > Instalar Mi Universo.
+3. Inicia sesión con el mismo correo y contraseña que usaste en Android.
+
+CÓMO FUNCIONA EL GUARDADO
+- Sin iniciar sesión: se guarda en localStorage de ese navegador/dispositivo.
+- Con sesión: al marcar una tarea o guardar notas, se envía la semana actual a Supabase.
+- En otro dispositivo: inicia sesión con la misma cuenta y abre la semana correspondiente.
+- Para sincronizar, ambos dispositivos necesitan internet.
+- El modo sin conexión conserva los cambios localmente, pero no los sube hasta recuperar conexión. Si editas la misma semana en dos dispositivos estando ambos desconectados, puede haber conflictos; conecta uno y espera la sincronización antes de editar en el otro.
+- La app inicializa cada semana con el plan base. Los checks y notas pertenecen a la semana seleccionada.
+
+PERSONALIZAR
+- Edita tareas predeterminadas en app.js, en el objeto DEFAULTS.
+- Cambia colores y estilos en styles.css.
+- Cambia nombre, iconos y pantalla inicial en manifest.webmanifest.
+
+PRIVACIDAD Y SEGURIDAD
+- Supabase almacena el correo de inicio de sesión y los planes semanales en tu proyecto.
+- Las políticas RLS del SQL limitan cada fila al usuario autenticado.
+- No compartas el archivo config.js públicamente si no quieres revelar tu URL y clave publicable; estas claves no son contraseñas, pero identifica tu proyecto.
+- No publiques nunca una clave service_role.
+- Para uso personal, activa confirmación de correo si Supabase lo requiere y revisa la configuración de Auth.
